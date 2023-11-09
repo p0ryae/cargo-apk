@@ -12,6 +12,8 @@ pub enum Target {
     X86 = 3,
     #[serde(rename = "x86_64-linux-android")]
     X86_64 = 4,
+    #[serde(rename = "arm-linux-androideabi")]
+    androideabi = 5,
 }
 
 impl Target {
@@ -22,7 +24,7 @@ impl Target {
             Self::ArmV7a => "armeabi-v7a",
             Self::X86 => "x86",
             Self::X86_64 => "x86_64",
-            Self::androideabi => "arm-linux-androideabi",
+            Self::androideabi => "androideabi",
         }
     }
 
