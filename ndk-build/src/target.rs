@@ -22,6 +22,7 @@ impl Target {
             Self::ArmV7a => "armeabi-v7a",
             Self::X86 => "x86",
             Self::X86_64 => "x86_64",
+            Self::androideabi => "arm-linux-androideabi",
         }
     }
 
@@ -32,6 +33,7 @@ impl Target {
             "armeabi-v7a" => Ok(Self::ArmV7a),
             "x86" => Ok(Self::X86),
             "x86_64" => Ok(Self::X86_64),
+            "androideabi" => Ok(Self::androideabi),
             _ => Err(NdkError::UnsupportedTarget),
         }
     }
@@ -43,6 +45,7 @@ impl Target {
             Self::ArmV7a => "armv7-linux-androideabi",
             Self::X86 => "i686-linux-android",
             Self::X86_64 => "x86_64-linux-android",
+            Self::androideabi => "arm-linux-androideabi",
         }
     }
 
@@ -53,6 +56,7 @@ impl Target {
             "armv7-linux-androideabi" => Ok(Self::ArmV7a),
             "i686-linux-android" => Ok(Self::X86),
             "x86_64-linux-android" => Ok(Self::X86_64),
+            "arm-linux-androideabi" => Ok(Self::androideabi),
             _ => Err(NdkError::UnsupportedTarget),
         }
     }
@@ -64,6 +68,7 @@ impl Target {
             Self::ArmV7a => "armv7a-linux-androideabi",
             Self::X86 => "i686-linux-android",
             Self::X86_64 => "x86_64-linux-android",
+            Self::androideabi => "arm-linux-androideabi",
         }
     }
 
@@ -74,6 +79,7 @@ impl Target {
             Self::ArmV7a => "arm-linux-androideabi",
             Self::X86 => "i686-linux-android",
             Self::X86_64 => "x86_64-linux-android",
+            Self::androideabi => "arm-linux-androideabi",
         }
     }
 }
