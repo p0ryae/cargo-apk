@@ -35,7 +35,7 @@ impl Target {
             "armeabi-v7a" => Ok(Self::ArmV7a),
             "x86" => Ok(Self::X86),
             "x86_64" => Ok(Self::X86_64),
-            "ARMv6" => Ok(Self::ARMv6),
+            "armeabi" => Ok(Self::ARMv6),
             _ => Err(NdkError::UnsupportedTarget),
         }
     }
