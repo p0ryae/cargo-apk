@@ -110,13 +110,13 @@ impl Ndk {
                 }
             })
             .expect("No `Pkg.Revision` in source.properties");
-
+        eprintln!("test");
         let ndk_platforms = std::fs::read_to_string(ndk_path.join("build/core/platforms.mk"))?;
         let ndk_platforms = ndk_platforms
             .split('\n')
             .map(|s| s.split_once(" := ").unwrap())
             .collect::<HashMap<_, _>>();
-        eprintln!("test");
+        
         let min_platform_level = ndk_platforms["NDK_MIN_PLATFORM_LEVEL"]
             .parse::<u32>()
             .unwrap();
