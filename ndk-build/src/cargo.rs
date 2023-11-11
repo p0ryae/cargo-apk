@@ -69,8 +69,6 @@ pub fn cargo_ndk(
     rustflags.push_str("-Clink-arg=");
     rustflags.push_str(&clang_target);
 
-    rustflags.push_str("-std=c++1z");
-
     let ar = ndk.toolchain_bin("ar", target)?;
     cargo.env(format!("AR_{}", triple), &ar);
     cargo.env(cargo_env_target_cfg("AR", triple), &ar);
@@ -109,6 +107,8 @@ pub fn cargo_ndk(
     }
 
     cargo.env("CARGO_ENCODED_RUSTFLAGS", rustflags);
+
+    cargo.env("CPPFLAGS", "-std=c++1z");
 
     Ok(cargo)
 }
