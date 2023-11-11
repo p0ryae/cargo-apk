@@ -13,7 +13,7 @@ pub enum Target {
     #[serde(rename = "x86_64-linux-android")]
     X86_64 = 4,
     #[serde(rename = "arm-linux-androideabi")]
-    androideabi = 5,
+    ARMv6 = 5,
 }
 
 impl Target {
@@ -24,7 +24,7 @@ impl Target {
             Self::ArmV7a => "armeabi-v7a",
             Self::X86 => "x86",
             Self::X86_64 => "x86_64",
-            Self::androideabi => "androideabi",
+            Self::ARMv6 => "armeabi",
         }
     }
 
@@ -35,7 +35,7 @@ impl Target {
             "armeabi-v7a" => Ok(Self::ArmV7a),
             "x86" => Ok(Self::X86),
             "x86_64" => Ok(Self::X86_64),
-            "androideabi" => Ok(Self::androideabi),
+            "ARMv6" => Ok(Self::ARMv6),
             _ => Err(NdkError::UnsupportedTarget),
         }
     }
@@ -47,7 +47,7 @@ impl Target {
             Self::ArmV7a => "armv7-linux-androideabi",
             Self::X86 => "i686-linux-android",
             Self::X86_64 => "x86_64-linux-android",
-            Self::androideabi => "arm-linux-androideabi",
+            Self::ARMv6 => "arm-linux-androideabi",
         }
     }
 
@@ -58,7 +58,7 @@ impl Target {
             "armv7-linux-androideabi" => Ok(Self::ArmV7a),
             "i686-linux-android" => Ok(Self::X86),
             "x86_64-linux-android" => Ok(Self::X86_64),
-            "arm-linux-androideabi" => Ok(Self::androideabi),
+            "arm-linux-androideabi" => Ok(Self::ARMv6),
             _ => Err(NdkError::UnsupportedTarget),
         }
     }
@@ -70,7 +70,7 @@ impl Target {
             Self::ArmV7a => "armv7a-linux-androideabi",
             Self::X86 => "i686-linux-android",
             Self::X86_64 => "x86_64-linux-android",
-            Self::androideabi => "arm-linux-androideabi",
+            Self::ARMv6 => "arm-linux-androideabi",
         }
     }
 
@@ -81,7 +81,7 @@ impl Target {
             Self::ArmV7a => "arm-linux-androideabi",
             Self::X86 => "i686-linux-android",
             Self::X86_64 => "x86_64-linux-android",
-            Self::androideabi => "arm-linux-androideabi",
+            Self::ARMv6 => "arm-linux-androideabi",
         }
     }
 }
