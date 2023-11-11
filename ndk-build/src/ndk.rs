@@ -76,7 +76,7 @@ impl Ndk {
                 PathBuf::from(ndk_path.ok_or(NdkError::NdkNotFound)?)
             }
         };
-        eprintln!("test");
+       
         let build_tools_dir = sdk_path.join("build-tools");
         let build_tools_version = std::fs::read_dir(&build_tools_dir)
             .or(Err(NdkError::PathNotFound(build_tools_dir)))?
@@ -86,7 +86,7 @@ impl Ndk {
             .filter(|name| name.chars().next().unwrap().is_ascii_digit())
             .max()
             .ok_or(NdkError::BuildToolsNotFound)?;
-
+        eprintln!("test");
         let build_tag = std::fs::read_to_string(ndk_path.join("source.properties"))
             .expect("Failed to read source.properties");
 
