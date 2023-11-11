@@ -119,6 +119,7 @@ impl<'a> UnalignedApk<'a> {
 
     pub fn add_lib(&mut self, path: &Path, target: Target) -> Result<(), NdkError> {
         if !path.exists() {
+            print!("199");
             return Err(NdkError::PathNotFound(path.into()));
         }
         let abi = target.android_abi();
@@ -186,6 +187,7 @@ impl<'a> UnalignedApk<'a> {
         search_paths: &[&Path],
     ) -> Result<(), NdkError> {
         let abi_dir = path.join(target.android_abi());
+        print!("127");
         for entry in fs::read_dir(&abi_dir).map_err(|e| NdkError::IoPathError(abi_dir, e))? {
             let entry = entry?;
             let path = entry.path();

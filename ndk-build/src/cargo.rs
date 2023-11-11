@@ -85,6 +85,7 @@ pub fn cargo_ndk(
             .join("cargo-apk-temp-extra-link-libraries");
         std::fs::create_dir_all(&cargo_apk_link_dir)
             .map_err(|e| NdkError::IoPathError(cargo_apk_link_dir.clone(), e))?;
+        println!("1237");
         let libgcc = cargo_apk_link_dir.join("libgcc.a");
         std::fs::write(&libgcc, "INPUT(-lunwind)").map_err(|e| NdkError::IoPathError(libgcc, e))?;
 
