@@ -289,11 +289,13 @@ impl Ndk {
 
         let clang = bin_path.join("clang").with_extension(ext);
         if !clang.exists() {
+            print!("12");
             return Err(NdkError::PathNotFound(clang));
         }
 
         let clang_pp = bin_path.join("clang++").with_extension(ext);
         if !clang_pp.exists() {
+            print!("13");
             return Err(NdkError::PathNotFound(clang_pp));
         }
 
@@ -340,6 +342,7 @@ impl Ndk {
             .join("prebuilt")
             .join(format!("{}-x86_64", arch));
         if !prebuilt_dir.exists() {
+            print!("17");
             Err(NdkError::PathNotFound(prebuilt_dir))
         } else {
             Ok(prebuilt_dir)
@@ -434,6 +437,7 @@ impl Ndk {
             .join("lib")
             .join(target.ndk_triple());
         if !sysroot_lib_dir.exists() {
+            print!("18");
             return Err(NdkError::PathNotFound(sysroot_lib_dir));
         }
         Ok(sysroot_lib_dir)
