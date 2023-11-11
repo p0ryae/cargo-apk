@@ -24,7 +24,6 @@ impl Ndk {
             let sdk_path = std::env::var("ANDROID_SDK_ROOT").ok();
             
             if sdk_path.is_some() {
-                eprintln!("test");
                 eprintln!(
                     "Warning: Environment variable ANDROID_SDK_ROOT is deprecated \
                     (https://developer.android.com/studio/command-line/variables#envar). \
@@ -38,7 +37,7 @@ impl Ndk {
                     .ok_or(NdkError::SdkNotFound)?,
             )
         };
-
+        eprintln!("test");
         let user_home = {
             let user_home = std::env::var("ANDROID_SDK_HOME")
                 .map(PathBuf::from)
