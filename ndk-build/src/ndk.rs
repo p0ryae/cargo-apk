@@ -22,8 +22,9 @@ impl Ndk {
     pub fn from_env() -> Result<Self, NdkError> {
         let sdk_path = {
             let sdk_path = std::env::var("ANDROID_SDK_ROOT").ok();
-            print!("test");
+            
             if sdk_path.is_some() {
+                eprintln!("test");
                 eprintln!(
                     "Warning: Environment variable ANDROID_SDK_ROOT is deprecated \
                     (https://developer.android.com/studio/command-line/variables#envar). \
