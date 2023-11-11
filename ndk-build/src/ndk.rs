@@ -71,10 +71,11 @@ impl Ndk {
             if ndk_path.is_none() && sdk_path.join("ndk-bundle").exists() {
                 sdk_path.join("ndk-bundle")
             } else {
+                print!("1");
                 PathBuf::from(ndk_path.ok_or(NdkError::NdkNotFound)?)
             }
         };
-
+        print!("2");
         let build_tools_dir = sdk_path.join("build-tools");
         let build_tools_version = std::fs::read_dir(&build_tools_dir)
             .or(Err(NdkError::PathNotFound(build_tools_dir)))?
@@ -123,6 +124,7 @@ impl Ndk {
             .parse::<u32>()
             .unwrap();
 
+        print!("3");
         let platforms_dir = sdk_path.join("platforms");
         let platforms: Vec<u32> = std::fs::read_dir(&platforms_dir)
             .or(Err(NdkError::PathNotFound(platforms_dir)))?
@@ -224,6 +226,7 @@ impl Ndk {
     pub fn android_jar(&self, platform: u32) -> Result<PathBuf, NdkError> {
         let android_jar = self.platform_dir(platform)?.join("android.jar");
         if !android_jar.exists() {
+            print!("10");
             return Err(NdkError::PathNotFound(android_jar));
         }
         Ok(android_jar)
@@ -269,6 +272,7 @@ impl Ndk {
             toolchain_dir.set_file_name(arch);
         }
         if !toolchain_dir.exists() {
+            print!("11");
             return Err(NdkError::PathNotFound(toolchain_dir));
         }
         Ok(toolchain_dir)
