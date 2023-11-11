@@ -37,7 +37,7 @@ impl Ndk {
                     .ok_or(NdkError::SdkNotFound)?,
             )
         };
-        eprintln!("test");
+
         let user_home = {
             let user_home = std::env::var("ANDROID_SDK_HOME")
                 .map(PathBuf::from)
@@ -60,7 +60,7 @@ impl Ndk {
                 .or_else(|| dirs::home_dir().map(|home| home.join(".android")))
                 .ok_or_else(|| NdkError::PathNotFound(PathBuf::from("$HOME")))?
         };
-
+        eprintln!("test");
         let ndk_path = {
             let ndk_path = std::env::var("ANDROID_NDK_ROOT")
                 .ok()
