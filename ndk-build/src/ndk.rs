@@ -86,7 +86,6 @@ impl Ndk {
             .filter(|name| name.chars().next().unwrap().is_ascii_digit())
             .max()
             .ok_or(NdkError::BuildToolsNotFound)?;
-        eprintln!("test");
         let build_tag = std::fs::read_to_string(ndk_path.join("source.properties"))
             .expect("Failed to read source.properties");
 
@@ -125,7 +124,7 @@ impl Ndk {
             .parse::<u32>()
             .unwrap();
 
-        print!("3");
+            eprintln!("test");
         let platforms_dir = sdk_path.join("platforms");
         let platforms: Vec<u32> = std::fs::read_dir(&platforms_dir)
             .or(Err(NdkError::PathNotFound(platforms_dir)))?
