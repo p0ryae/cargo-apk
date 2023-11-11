@@ -116,7 +116,7 @@ impl Ndk {
             .split('\n')
             .map(|s| s.split_once(" := ").unwrap())
             .collect::<HashMap<_, _>>();
-
+        eprintln!("test");
         let min_platform_level = ndk_platforms["NDK_MIN_PLATFORM_LEVEL"]
             .parse::<u32>()
             .unwrap();
@@ -124,7 +124,7 @@ impl Ndk {
             .parse::<u32>()
             .unwrap();
 
-            eprintln!("test");
+            
         let platforms_dir = sdk_path.join("platforms");
         let platforms: Vec<u32> = std::fs::read_dir(&platforms_dir)
             .or(Err(NdkError::PathNotFound(platforms_dir)))?
