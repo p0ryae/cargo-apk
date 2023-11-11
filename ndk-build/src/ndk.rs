@@ -60,7 +60,7 @@ impl Ndk {
                 .or_else(|| dirs::home_dir().map(|home| home.join(".android")))
                 .ok_or_else(|| NdkError::PathNotFound(PathBuf::from("$HOME")))?
         };
-        eprintln!("test");
+
         let ndk_path = {
             let ndk_path = std::env::var("ANDROID_NDK_ROOT")
                 .ok()
@@ -76,7 +76,7 @@ impl Ndk {
                 PathBuf::from(ndk_path.ok_or(NdkError::NdkNotFound)?)
             }
         };
-        print!("2");
+        eprintln!("test");
         let build_tools_dir = sdk_path.join("build-tools");
         let build_tools_version = std::fs::read_dir(&build_tools_dir)
             .or(Err(NdkError::PathNotFound(build_tools_dir)))?
