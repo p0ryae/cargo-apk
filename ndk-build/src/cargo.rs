@@ -11,7 +11,7 @@ pub fn cargo_ndk(
     target_dir: impl AsRef<Path>,
 ) -> Result<Command, NdkError> {
     let triple = target.rust_triple();
-    let clang_target = format!("--target={}{}", target.ndk_llvm_triple(), sdk_version);
+    let clang_target = format!("--target={}{} -gcc-toolchain {}", target.ndk_llvm_triple(), sdk_version, "/home/porya/Android/Sdk/ndk/android-ndk-r16b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/");
     let mut cargo = Command::new("cargo");
 
     const SEP: &str = "\x1f";
@@ -107,8 +107,6 @@ pub fn cargo_ndk(
     }
 
     cargo.env("CARGO_ENCODED_RUSTFLAGS", rustflags);
-
-    cargo.env("CPPFLAGS", "-std=c++1z");
 
     Ok(cargo)
 }
