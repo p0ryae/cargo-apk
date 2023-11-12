@@ -79,7 +79,7 @@ pub fn cargo_ndk(
     // See https://github.com/rust-lang/rust/pull/85806 for a discussion on why libgcc
     // is still required even after replacing it with libunwind in the source.
     // XXX: Add an upper-bound on the Rust version whenever this is not necessary anymore.
-
+    if ndk.build_tag() > 7272597 {
         let cargo_apk_link_dir = target_dir
             .as_ref()
             .join("cargo-apk-temp-extra-link-libraries");
@@ -104,7 +104,7 @@ pub fn cargo_ndk(
                 .to_str()
                 .expect("Target dir must be valid UTF-8"),
         );
-
+    }
 
     cargo.env("CARGO_ENCODED_RUSTFLAGS", rustflags);
 
