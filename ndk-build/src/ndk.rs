@@ -265,7 +265,7 @@ impl Ndk {
         let mut toolchain_dir = self
             .ndk_path
             .join("toolchains")
-            .join("arm-linux-androideabi-4.9")
+            .join("llvm")
             .join("prebuilt")
             .join(format!("{}-x86_64", arch));
         if !toolchain_dir.exists() {
